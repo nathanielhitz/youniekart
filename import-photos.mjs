@@ -2,7 +2,7 @@
 //
 // Bulk-import van foto's naar Sanity albums.
 // Mapstructuur:  SOURCE_DIR/<Categorie>/<Albumnaam>/<foto's>
-//   Categorie moet zijn: Portret | Trouw | Natuur
+//   Categorie moet zijn: Portret | Trouw | Natuur | Abstract | Reizen
 //
 // Vereist:
 //   npm i @sanity/client
@@ -20,7 +20,7 @@ import { join, extname, basename } from 'node:path'
 import { randomUUID } from 'node:crypto'
 
 const SOURCE_DIR = process.argv[2] || './images-gesorteerd'
-const VALID_CATEGORIES = ['Portret', 'Trouw', 'Natuur']
+const VALID_CATEGORIES = ['Portret', 'Trouw', 'Natuur', 'Abstract', 'Reizen']
 const IMAGE_EXT = ['.jpg', '.jpeg', '.png', '.webp']
 
 const client = createClient({

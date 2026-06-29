@@ -35,6 +35,8 @@ export const album = defineType({
           { title: 'Portret', value: 'Portret' },
           { title: 'Trouw', value: 'Trouw' },
           { title: 'Natuur', value: 'Natuur' },
+          { title: 'Abstract', value: 'Abstract' },
+          { title: 'Reizen', value: 'Reizen' },
         ],
         layout: 'radio',
       },
