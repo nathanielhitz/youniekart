@@ -3,9 +3,13 @@ import { groq } from 'next-sanity'
 /** Herbruikbare projecties */
 const imageFields = /* groq */ `
   _type,
-  asset,
   hotspot,
-  crop
+  crop,
+  asset->{
+    _id,
+    "lqip": metadata.lqip,
+    "aspectRatio": metadata.dimensions.aspectRatio
+  }
 `
 
 const albumListFields = /* groq */ `

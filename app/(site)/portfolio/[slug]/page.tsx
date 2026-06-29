@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getAlbumBySlug, getAlbumSlugs } from '../../../../sanity/lib/api'
+import { AlbumGallery } from '../../../../components/AlbumGallery'
 
 export async function generateStaticParams() {
   const slugs = await getAlbumSlugs()
@@ -21,7 +23,6 @@ export async function generateMetadata({
   }
 }
 
-// Fase 4: data + routing. Galerij/lightbox-styling volgt in Fase 5.
 export default async function AlbumPage({
   params,
 }: {
@@ -32,29 +33,32 @@ export default async function AlbumPage({
   if (!album) notFound()
 
   return (
-    <div className="p-8 space-y-6">
-      <header>
-        <p className="text-muted uppercase tracking-widest text-sm">
-          {album.category}
-        </p>
-        <h1 className="font-serif text-4xl">{album.title}</h1>
-        {album.description && (
-          <p className="mt-2 max-w-prose text-muted">{album.description}</p>
+    <div className="px-[clamp(20px,5vw,64px)] pb-[clamp(72px,12vh,140px)] pt-[clamp(120px,18vh,200px)]">
+      <div className="mx-auto max-w-site">
+        <header className="mb-12 max-w-[760px]">
+          <Link
+            href="/portfolio"
+            className="mb-6 inline-block text-[11px] uppercase tracking-[0.22em] text-muted hover:text-paper"
+          >
+            ← Portfolio
+          </Link>
+          <div className="eyebrow mb-3">{album.category}</div>
+          <h1 className="font-serif text-[clamp(34px,5vw,64px)] leading-tight">
+            {album.title}
+          </h1>
+          {album.description && (
+            <p className="mt-5 text-muted text-[clamp(15px,1.4vw,17px)]">
+              {album.description}
+            </p>
+          )}
+        </header>
+
+        {album.photos?.length ? (
+          <AlbumGallery photos={album.photos} />
+        ) : (
+          <p className="text-muted">Nog geen foto&apos;s in dit album.</p>
         )}
-      </header>
-
-      <p className="text-muted">{album.photos?.length ?? 0} {"foto's"}</p>
-
-      <ul className="space-y-1">
-        {album.photos?.map((photo) => (
-          <li key={photo._key}>
-            {photo.alt}
-            {photo.caption && (
-              <span className="text-muted"> — {photo.caption}</span>
-            )}
-          </li>
-        ))}
-      </ul>
+      </div>
     </div>
   )
 }
