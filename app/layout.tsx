@@ -19,10 +19,10 @@ const jost = Jost({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Youniek Art — Monniek Westerop',
+    default: 'Youniek Art · Monniek Westerop',
     template: '%s',
   },
-  description: 'Fotografie van Monniek Westerop — portret, natuur en vrij werk.',
+  description: 'Fotografie van Monniek Westerop. Portret, natuur en vrij werk.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

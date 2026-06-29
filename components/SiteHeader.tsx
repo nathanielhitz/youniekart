@@ -49,7 +49,7 @@ export function SiteHeader({ wordmark = 'Youniek·Art' }: { wordmark?: string })
           : 'bg-transparent py-[26px]'
       }`}
     >
-      <Link href="/" aria-label="Youniek Art — home">
+      <Link href="/" aria-label="Youniek Art, home">
         <Wordmark text={wordmark} />
       </Link>
 

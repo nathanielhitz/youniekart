@@ -3,7 +3,7 @@ import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import { getAboutPage, getSiteSettings } from '../../../sanity/lib/api'
 import { SiteImage } from '../../../components/SiteImage'
 
-export const metadata = { title: 'Over mij — Youniek Art' }
+export const metadata = { title: 'Over mij · Youniek Art' }
 
 const bioComponents: PortableTextComponents = {
   block: {

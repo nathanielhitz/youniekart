@@ -16,9 +16,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const album = await getAlbumBySlug(slug)
-  if (!album) return { title: 'Album niet gevonden — Youniek Art' }
+  if (!album) return { title: 'Album niet gevonden · Youniek Art' }
   return {
-    title: `${album.title} — Youniek Art`,
+    title: `${album.title} · Youniek Art`,
     description: album.description,
   }
 }

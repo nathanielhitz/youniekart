@@ -17,7 +17,7 @@ export function AlbumTile({
     <Link
       href={`/portfolio/${album.slug}`}
       className={`tile group block ${className}`}
-      aria-label={`${album.title} — ${album.category}`}
+      aria-label={`${album.title}, ${album.category}`}
     >
       <div className="tile-media absolute inset-0">
         <SiteImage

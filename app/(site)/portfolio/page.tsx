@@ -1,7 +1,7 @@
 import { getAlbums } from '../../../sanity/lib/api'
 import { PortfolioGrid } from '../../../components/PortfolioGrid'
 
-export const metadata = { title: 'Portfolio — Youniek Art' }
+export const metadata = { title: 'Portfolio · Youniek Art' }
 
 export default async function PortfolioPage() {
   const albums = await getAlbums()

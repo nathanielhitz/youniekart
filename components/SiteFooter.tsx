@@ -61,7 +61,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings | null }) {
       </div>
 
       <div className="mx-auto mt-12 flex max-w-site flex-wrap justify-between gap-3 border-t border-line pt-[22px] text-xs text-muted">
-        <span>© {year} Youniek Art — Monniek Westerop</span>
+        <span>© {year} Youniek Art · Monniek Westerop</span>
         <span>Gebouwd door HitzDigital</span>
       </div>
     </footer>

@@ -21,7 +21,7 @@ export default async function HomePage() {
   const heroTitle = home?.heroTitle ?? 'Het moment,\nvastgehouden in licht.'
   const heroSubtitle =
     home?.heroSubtitle ??
-    'Portret, natuur en alles daartussenin — door de lens van Youniek Art.'
+    'Portret, natuur en alles daartussenin, door de lens van Youniek Art.'
 
   const featured =
     home?.featuredAlbums?.length ? home.featuredAlbums : albums.slice(0, 5)
@@ -71,7 +71,7 @@ export default async function HomePage() {
           </h2>
           <p className="text-muted text-[clamp(15px,1.4vw,17px)]">
             {home?.introBody ??
-              'Youniek Art is de fotografie van Monniek Westerop — portret, natuur en vrij werk, altijd op zoek naar het echte moment.'}
+              'Youniek Art is de fotografie van Monniek Westerop: portret, natuur en vrij werk, altijd op zoek naar het echte moment.'}
           </p>
           <Link href="/over-mij" className="text-link mt-[18px]">
             Lees meer over mij
