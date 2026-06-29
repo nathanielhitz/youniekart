@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getAlbums, getHomePage } from '../../sanity/lib/api'
 import { SiteImage } from '../../components/SiteImage'
 import { AlbumTile } from '../../components/AlbumTile'
+import { Reveal } from '../../components/Reveal'
 
 // Editoriale grid-indeling (volgt de mockup): 1 breed + smal, daarna 3 staand.
 const FEATURED_LAYOUT = [
@@ -54,17 +55,11 @@ export default async function HomePage() {
             {heroSubtitle}
           </p>
         </div>
-
-        <div className="absolute bottom-[46px] right-[clamp(20px,5vw,64px)] z-[2] flex items-center gap-[10px] text-[11px] uppercase tracking-[0.22em] text-muted">
-          <span>Scroll</span>
-          <span className="scrollcue-bar" />
-        </div>
       </section>
 
       {/* ===== INTRO ===== */}
       <section className="px-[clamp(20px,5vw,64px)] py-[clamp(72px,12vh,140px)]">
-        <div className="mx-auto max-w-[760px] text-center">
-          <div className="eyebrow mb-[22px]">Over Monniek</div>
+        <Reveal className="mx-auto max-w-[760px] text-center">
           <h2 className="mb-[26px] font-serif text-[clamp(26px,4vw,44px)] leading-[1.25]">
             {home?.introHeading ??
               'Een oog voor het ongepolijste, eerlijke moment.'}
@@ -76,33 +71,31 @@ export default async function HomePage() {
           <Link href="/over-mij" className="text-link mt-[18px]">
             Lees meer over mij
           </Link>
-        </div>
+        </Reveal>
       </section>
 
       {/* ===== UITGELICHT WERK ===== */}
       {featured.length > 0 && (
         <section className="px-[clamp(20px,5vw,64px)] pb-[clamp(72px,12vh,140px)]">
           <div className="mx-auto max-w-site">
-            <div className="mb-10 flex flex-wrap items-end justify-between gap-5">
-              <div>
-                <div className="eyebrow mb-2">Uitgelicht werk</div>
-                <h2 className="font-serif text-[clamp(26px,3.6vw,40px)]">
-                  Een selectie
-                </h2>
-              </div>
+            <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-5">
+              <h2 className="font-serif text-[clamp(26px,3.6vw,40px)]">
+                Uitgelicht werk
+              </h2>
               <Link
                 href="/portfolio"
-                className="whitespace-nowrap text-[12px] uppercase tracking-[0.22em] text-muted hover:text-paper"
+                className="whitespace-nowrap text-[12px] uppercase tracking-[0.22em] text-muted transition-colors hover:text-paper"
               >
                 Bekijk het volledige portfolio →
               </Link>
-            </div>
+            </Reveal>
 
             <div className="grid grid-cols-12 gap-[14px]">
               {featured.slice(0, 5).map((album, i) => (
                 <AlbumTile
                   key={album._id}
                   album={album}
+                  index={i}
                   className={`col-span-12 ${FEATURED_LAYOUT[i] ?? 'md:col-span-4 aspect-[3/4]'}`}
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 640px"
                 />
