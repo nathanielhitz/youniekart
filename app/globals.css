@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* ─── Google Fonts ──────────────────────────────────── */
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap");
-
 /* ─── Design tokens ─────────────────────────────────── */
 @theme {
   --color-ink:    #0B0E11;
@@ -11,8 +8,8 @@
   --color-muted:  #8A949B;
   --color-accent: #7AE7EF;
 
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans:  "Jost", system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans:  var(--font-jost), system-ui, sans-serif;
 }
 
 /* ─── Base ───────────────────────────────────────────── */
