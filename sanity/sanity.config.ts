@@ -10,6 +10,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production'
 export default defineConfig({
   name: 'youniek-art',
   title: 'Youniek Art',
+  basePath: '/studio',
   projectId,
   dataset,
 
