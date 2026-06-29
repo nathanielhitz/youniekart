@@ -38,6 +38,20 @@ export function SiteHeader({ wordmark = 'Youniek·Art' }: { wordmark?: string })
   // sluit het mobiele menu bij route-wissel
   useEffect(() => setMenuOpen(false), [pathname])
 
+  // sluit het mobiele menu met Escape + lock de scroll zolang het open is
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
+
   const isActive = (href: string) =>
     href === '/' ? pathname === '/' : pathname.startsWith(href)
 
