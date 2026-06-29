@@ -7,9 +7,12 @@
   --color-paper:  #EAEFF1;
   --color-muted:  #8A949B;
   --color-accent: #7AE7EF;
+  --color-line:   rgba(234, 239, 241, 0.13);
 
   --font-serif: var(--font-cormorant), Georgia, serif;
   --font-sans:  var(--font-jost), system-ui, sans-serif;
+
+  --spacing-site: 1280px;
 }
 
 /* ─── Base ───────────────────────────────────────────── */
@@ -23,9 +26,12 @@
 
 html {
   color-scheme: dark;
+  scroll-behavior: smooth;
   background-color: var(--color-ink);
   color: var(--color-paper);
   font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -36,7 +42,128 @@ a {
   text-decoration: none;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ─── Herbruikbare type-helpers ───────────────────────── */
+/* Klein getrackt label/eyebrow (Jost, uppercase) */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* ─── Wordmark ────────────────────────────────────────── */
+.wordmark {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  font-size: 15px;
+  color: var(--color-paper);
+  white-space: nowrap;
+}
+.wordmark span { color: var(--color-accent); }
+
+/* ─── Nav-link met groeiende accent-underline ─────────── */
+.nav-link {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--color-paper);
+  opacity: 0.82;
+  position: relative;
+  padding: 4px 0;
+  transition: opacity 0.25s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 0;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+.nav-link:hover,
+.nav-link:focus-visible { opacity: 1; }
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link[data-active="true"]::after { width: 100%; }
+.nav-link[data-active="true"] { opacity: 1; }
+
+/* ─── Tekstlink met accent-onderlijn ──────────────────── */
+.text-link {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-paper);
+  border-bottom: 1px solid var(--color-accent);
+  padding-bottom: 5px;
+  transition: color 0.25s ease;
+}
+
+/* ─── Hero slow-zoom ──────────────────────────────────── */
+.hero-zoom {
+  transform: scale(1.05);
+  animation: slowzoom 22s ease-in-out infinite alternate;
+}
+@keyframes slowzoom {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1.12); }
+}
+
+/* ─── Scroll-cue balkje ───────────────────────────────── */
+.scrollcue-bar {
+  width: 1px;
+  height: 46px;
+  background: linear-gradient(var(--color-accent), transparent);
+  animation: drop 1.8s ease-in-out infinite;
+}
+@keyframes drop {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+  50%      { opacity: 1; transform: scaleY(1); }
+}
+
+/* ─── Foto-tegel hover-reveal ─────────────────────────── */
+.tile { position: relative; overflow: hidden; background: var(--color-ink-2); }
+.tile-media { transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.tile:hover .tile-media,
+.tile:focus-within .tile-media { transform: scale(1.06); }
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 9, 12, 0.62), transparent 55%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.tile:hover::after,
+.tile:focus-within::after { opacity: 1; }
+.tile-cap {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.tile:hover .tile-cap,
+.tile:focus-within .tile-cap { opacity: 1; transform: translateY(0); }
+
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-zoom { animation: none; transform: none; }
+  .scrollcue-bar { animation: none; }
   *,
   *::before,
   *::after {

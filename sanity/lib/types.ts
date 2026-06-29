@@ -4,15 +4,16 @@ import type { PortableTextBlock } from '@portabletext/types'
 export const CATEGORIES = ['Portret', 'Trouw', 'Natuur', 'Abstract', 'Reizen'] as const
 export type Category = (typeof CATEGORIES)[number]
 
-/** Een Sanity image-veld met hotspot/crop (referentie naar het asset). */
+/** Een Sanity image-veld met hotspot/crop + gedereferenceerd asset (lqip, ratio). */
 export interface SanityImage {
-  _type: 'image'
-  asset: {
-    _ref: string
-    _type: 'reference'
-  }
+  _type?: 'image'
   hotspot?: { x: number; y: number; height: number; width: number }
   crop?: { top: number; bottom: number; left: number; right: number }
+  asset: {
+    _id: string
+    lqip?: string
+    aspectRatio?: number
+  }
 }
 
 /** Eén foto binnen een album (object: galleryImage). */

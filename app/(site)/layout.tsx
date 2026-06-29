@@ -1,9 +1,19 @@
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
+import { SiteHeader } from '../../components/SiteHeader'
+import { SiteFooter } from '../../components/SiteFooter'
+import { getSiteSettings } from '../../sanity/lib/api'
+
+export default async function SiteLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const settings = await getSiteSettings()
+
   return (
     <>
-      {/* nav komt in Fase 5 */}
-      <main>{children}</main>
-      {/* footer komt in Fase 5 */}
+      <SiteHeader wordmark={settings?.wordmark ?? 'Youniek·Art'} />
+      <main className="min-h-screen">{children}</main>
+      <SiteFooter settings={settings} />
     </>
   )
 }
