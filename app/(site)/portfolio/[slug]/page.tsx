@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getAlbumBySlug, getAlbumSlugs } from '../../../../sanity/lib/api'
 import { AlbumGallery } from '../../../../components/AlbumGallery'
+import { ogImageUrl } from '../../../../lib/seo'
 
 export async function generateStaticParams() {
   const slugs = await getAlbumSlugs()
@@ -17,9 +18,17 @@ export async function generateMetadata({
   const { slug } = await params
   const album = await getAlbumBySlug(slug)
   if (!album) return { title: 'Album niet gevonden · Youniek Art' }
+  const og = album.coverImage ? ogImageUrl(album.coverImage) : undefined
   return {
     title: `${album.title} · Youniek Art`,
     description: album.description,
+    alternates: { canonical: `/portfolio/${slug}` },
+    openGraph: {
+      title: `${album.title} · Youniek Art`,
+      description: album.description,
+      url: `/portfolio/${slug}`,
+      images: og ? [{ url: og, width: 1200, height: 630 }] : undefined,
+    },
   }
 }
 

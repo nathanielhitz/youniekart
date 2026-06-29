@@ -46,6 +46,7 @@ export function PortfolioGrid({ albums }: { albums: AlbumListItem[] }) {
             <AlbumTile
               key={album._id}
               album={album}
+              index={i}
               className="col-span-12 aspect-[4/5] sm:col-span-6 lg:col-span-4"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               priority={i < 3}

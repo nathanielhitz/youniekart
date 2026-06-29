@@ -3,7 +3,11 @@ import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import { getAboutPage, getSiteSettings } from '../../../sanity/lib/api'
 import { SiteImage } from '../../../components/SiteImage'
 
-export const metadata = { title: 'Over mij · Youniek Art' }
+export const metadata = {
+  title: 'Over mij · Youniek Art',
+  description: 'Over Monniek Westerop, de fotograaf achter Youniek Art.',
+  alternates: { canonical: '/over-mij' },
+}
 
 const bioComponents: PortableTextComponents = {
   block: {
@@ -56,7 +60,6 @@ export default async function AboutPage() {
 
         {/* Tekst */}
         <div className="max-w-[640px]">
-          <div className="eyebrow mb-3">Over mij</div>
           <h1 className="mb-8 font-serif text-[clamp(34px,5vw,60px)] leading-tight">
             {about?.heading ?? 'Monniek Westerop'}
           </h1>
