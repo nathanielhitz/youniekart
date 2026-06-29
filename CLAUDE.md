@@ -108,3 +108,4 @@ Niet nu: Blog (Fase 2), EN-vertaling (Fase 2), contactformulier.
 - ⚠️ Wacht met de definitieve hero/portfolio op **hoge-resolutie originelen** van Monniek (Instagram-export is te laag-res).
 - Contact: `nieki.is@live.nl` + Instagram @you_niek.art.
 - Categorie = vast dropdown-lijstje op album: Portret / Trouw / Natuur.
+Sanity bewust op v4.22 (ponyfill) i.v.m. Next 15 canary-React. Upgrade naar Sanity 6+ pas bij overstap naar Next 16.
