@@ -59,7 +59,7 @@ export function SiteHeader({ wordmark = 'Youniek·Art' }: { wordmark?: string })
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background,padding] duration-[400ms] ${
         scrolled
-          ? 'bg-ink/[0.86] py-[18px] backdrop-blur-[10px]'
+          ? 'bg-ink/86 py-[18px] backdrop-blur-[10px]'
           : 'bg-transparent py-[26px]'
       }`}
     >
