@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const NAV = [
   { href: '/', label: 'Home' },
@@ -27,6 +27,30 @@ export function SiteHeader({ wordmark = 'Youniek·Art' }: { wordmark?: string })
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
+
+  // Meet de werkelijke header-hoogte (niet-gescrolde staat) en zet --header-height.
+  // Runt alleen bij mount en resize, niet bij scroll, zodat de waarde altijd
+  // de maximale hoogte vertegenwoordigt.
+  useEffect(() => {
+    const el = headerRef.current
+    if (!el) return
+
+    const update = () => {
+      // Alleen meten als we de volledige (niet-gescrolde) hoogte kunnen zien.
+      if (window.scrollY <= 40) {
+        document.documentElement.style.setProperty(
+          '--header-height',
+          `${Math.ceil(el.getBoundingClientRect().height)}px`,
+        )
+      }
+    }
+
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -57,6 +81,7 @@ export function SiteHeader({ wordmark = 'Youniek·Art' }: { wordmark?: string })
 
   return (
     <header
+      ref={headerRef}
       className={`fixed inset-x-0 top-0 z-50 transition-[background,padding] duration-[400ms] ${
         scrolled
           ? 'bg-ink/86 py-[18px] backdrop-blur-[10px]'

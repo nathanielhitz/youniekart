@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* ─── Header-hoogte (één bron van waarheid) ─────────── */
+/* SiteHeader meet de werkelijke hoogte via ResizeObserver en
+   overschrijft deze fallback zodra JS draait. */
+:root {
+  --header-height: 90px;
+}
+
 /* ─── Design tokens ─────────────────────────────────── */
 @theme {
   --color-ink:    #0B0E11;
@@ -41,6 +48,7 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
   background-color: var(--color-ink);
   color: var(--color-paper);
   font-family: var(--font-sans);
@@ -49,6 +57,14 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* ─── Pagina-inhoud met vaste header-offset ──────────── */
+/* Gebruik op alle binnenste pagina's (niet op Home-hero).
+   Garanteert: content begint altijd onder de vaste header,
+   ongeacht schermhoogte of filterbalk-wrapping. */
+.page-top {
+  padding-top: calc(var(--header-height) + clamp(40px, 6vh, 120px));
 }
 
 a {

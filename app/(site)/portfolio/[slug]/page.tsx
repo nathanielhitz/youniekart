@@ -42,7 +42,7 @@ export default async function AlbumPage({
   if (!album) notFound()
 
   return (
-    <div className="pb-[clamp(72px,12vh,140px)] pt-[clamp(120px,18vh,200px)]">
+    <div className="page-top pb-[clamp(72px,12vh,140px)]">
       <div className="wrap">
         <header className="mb-12 max-w-[760px]">
           <Link

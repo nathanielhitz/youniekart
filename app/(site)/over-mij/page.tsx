@@ -39,10 +39,13 @@ export default async function AboutPage() {
   const ctaLabel = about?.contactCta ?? 'Neem contact op'
 
   return (
-    <div className="pb-[clamp(72px,12vh,140px)] pt-[clamp(120px,18vh,200px)]">
+    <div className="page-top pb-[clamp(72px,12vh,140px)]">
       <div className="wrap grid grid-cols-1 gap-[clamp(32px,5vw,72px)] md:grid-cols-[0.8fr_1.2fr]">
         {/* Portret */}
-        <div className="relative aspect-[3/4] w-full self-start overflow-hidden bg-ink-2 md:sticky md:top-[120px]">
+        <div
+          className="relative aspect-[3/4] w-full self-start overflow-hidden bg-ink-2 md:sticky"
+          style={{ top: 'calc(var(--header-height) + 24px)' }}
+        >
           {about?.portrait ? (
             <SiteImage
               image={about.portrait}
