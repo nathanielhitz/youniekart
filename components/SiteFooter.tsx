@@ -24,8 +24,8 @@ export function SiteFooter({ settings }: { settings: SiteSettings | null }) {
   const year = 2026
 
   return (
-    <footer className="border-t border-line bg-ink-2 px-[clamp(20px,5vw,64px)] pb-10 pt-[clamp(54px,8vh,86px)]">
-      <div className="mx-auto grid max-w-site grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+    <footer className="border-t border-line bg-ink-2 pb-10 pt-[clamp(54px,8vh,86px)]">
+      <div className="wrap grid grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <Link href="/" className="mb-4 inline-block">
             <Wordmark text={wordmark} />
@@ -60,7 +60,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings | null }) {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 flex max-w-site flex-wrap justify-between gap-3 border-t border-line pt-[22px] text-xs text-muted">
+      <div className="wrap mt-12 flex flex-wrap justify-between gap-3 border-t border-line pt-[22px] text-xs text-muted">
         <span>© {year} Youniek Art · Monniek Westerop</span>
         <span>Gebouwd door HitzDigital</span>
       </div>

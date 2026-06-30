@@ -44,7 +44,7 @@ export default async function HomePage() {
         )}
         <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(10,13,16,0.88)_0%,rgba(10,13,16,0)_45%)]" />
 
-        <div className="relative z-[2] px-[clamp(20px,5vw,64px)] pb-[clamp(46px,7vh,80px)]">
+        <div className="wrap relative z-[2] pb-[clamp(46px,7vh,80px)]">
           <div className="eyebrow mb-4" style={{ letterSpacing: '0.34em' }}>
             {heroEyebrow}
           </div>
@@ -58,7 +58,7 @@ export default async function HomePage() {
       </section>
 
       {/* ===== INTRO ===== */}
-      <section className="px-[clamp(20px,5vw,64px)] py-[clamp(72px,12vh,140px)]">
+      <section className="wrap py-[clamp(72px,12vh,140px)]">
         <Reveal className="mx-auto max-w-[760px] text-center">
           <h2 className="mb-[26px] font-serif text-[clamp(26px,4vw,44px)] leading-[1.25]">
             {home?.introHeading ??
@@ -76,8 +76,8 @@ export default async function HomePage() {
 
       {/* ===== UITGELICHT WERK ===== */}
       {featured.length > 0 && (
-        <section className="px-[clamp(20px,5vw,64px)] pb-[clamp(72px,12vh,140px)]">
-          <div className="mx-auto max-w-site">
+        <section className="pb-[clamp(72px,12vh,140px)]">
+          <div className="wrap">
             <Reveal className="mb-10 flex flex-wrap items-end justify-between gap-5">
               <h2 className="font-serif text-[clamp(26px,3.6vw,40px)]">
                 Uitgelicht werk

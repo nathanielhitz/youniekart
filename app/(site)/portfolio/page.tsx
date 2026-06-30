@@ -11,8 +11,8 @@ export default async function PortfolioPage() {
   const albums = await getAlbums()
 
   return (
-    <div className="px-[clamp(20px,5vw,64px)] pb-[clamp(72px,12vh,140px)] pt-[clamp(120px,18vh,200px)]">
-      <div className="mx-auto max-w-site">
+    <div className="pb-[clamp(72px,12vh,140px)] pt-[clamp(120px,18vh,200px)]">
+      <div className="wrap">
         <header className="mb-12">
           <h1 className="font-serif text-[clamp(34px,5vw,64px)] leading-tight">
             Het werk
