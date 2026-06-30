@@ -62,7 +62,17 @@ export function SiteFooter({ settings }: { settings: SiteSettings | null }) {
 
       <div className="wrap mt-12 flex flex-wrap justify-between gap-3 border-t border-line pt-[22px] text-xs text-muted">
         <span>© {year} Youniek Art · Monniek Westerop</span>
-        <span>Gebouwd door HitzDigital</span>
+        <span>
+          Gebouwd door{' '}
+          <a
+            href="https://www.hitzdigital.nl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-paper"
+          >
+            HitzDigital
+          </a>
+        </span>
       </div>
     </footer>
   )
