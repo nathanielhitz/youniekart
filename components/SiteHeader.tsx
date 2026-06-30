@@ -57,43 +57,45 @@ export function SiteHeader({ wordmark = 'Youniek·Art' }: { wordmark?: string })
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between px-[clamp(20px,5vw,64px)] transition-[background,padding] duration-[400ms] ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background,padding] duration-[400ms] ${
         scrolled
           ? 'bg-ink/[0.86] py-[18px] backdrop-blur-[10px]'
           : 'bg-transparent py-[26px]'
       }`}
     >
-      <Link href="/" aria-label="Youniek Art, home">
-        <Wordmark text={wordmark} />
-      </Link>
+      <div className="wrap flex items-center justify-between">
+        <Link href="/" aria-label="Youniek Art, home">
+          <Wordmark text={wordmark} />
+        </Link>
 
-      {/* desktop nav */}
-      <nav className="hidden md:block">
-        <ul className="flex gap-[clamp(20px,3vw,46px)]">
-          {NAV.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="nav-link"
-                data-active={isActive(item.href)}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+        {/* desktop nav */}
+        <nav className="hidden md:block">
+          <ul className="flex gap-[clamp(20px,3vw,46px)]">
+            {NAV.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="nav-link"
+                  data-active={isActive(item.href)}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-      {/* mobiel menu-knop */}
-      <button
-        type="button"
-        className="text-[13px] uppercase tracking-[0.2em] md:hidden"
-        aria-expanded={menuOpen}
-        aria-controls="mobile-menu"
-        onClick={() => setMenuOpen((o) => !o)}
-      >
-        {menuOpen ? 'Sluit' : 'Menu'}
-      </button>
+        {/* mobiel menu-knop */}
+        <button
+          type="button"
+          className="text-[13px] uppercase tracking-[0.2em] md:hidden"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setMenuOpen((o) => !o)}
+        >
+          {menuOpen ? 'Sluit' : 'Menu'}
+        </button>
+      </div>
 
       {/* mobiel overlay */}
       {menuOpen && (
